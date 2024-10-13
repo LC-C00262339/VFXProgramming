@@ -31,21 +31,60 @@ triangleside1 = bpy.context.scene.objects["TriangleSide1"]
 triangleside2 = bpy.context.scene.objects["TriangleSide2"]
 triangleside3 = bpy.context.scene.objects["TriangleSide3"]
 
-# Triangle formation
+# Triangle bottom formation 
 
 triangleside3.keyframe_insert("location", frame=start_frame)
 triangleside3.location.x = 1.7
 triangleside3.location.z = 1.5
 triangleside3.rotation_euler = (0.2, 0, 0)
 console(f"Triangle base moved and rotated")
+
 triangleside3.keyframe_insert("location", frame=mid_frame)
 triangleside3.rotation_euler = (0.7, 0, 0)
 triangleside3.location.x = 2.5
-triangleside3.location.z = 2.5
+triangleside3.location.z = 3.5
+
 triangleside3.keyframe_insert("location", frame=end_frame)
 triangleside3.rotation_euler = (1.58, 0, 0)
 triangleside3.location.x = 3.9
 triangleside3.location.z = 5
+
+# Triangle left rotation
+
+triangleside2.keyframe_insert("location", frame=start_frame)
+triangleside2.location.x = -2.5
+triangleside2.location.z = 1.5
+triangleside2.rotation_euler = (0.2, 0, 0)
+
+triangleside2.keyframe_insert("location", frame=mid_frame)
+triangleside2.location.x = -1
+triangleside2.location.z = 3.5
+triangleside2.rotation_euler = (0.25, 0, 0)
+
+triangleside2.keyframe_insert("location", frame=end_frame)
+triangleside2.rotation_euler = (0.45, 0, 0)
+triangleside2.location.x = 3.9
+triangleside2.location.y = 0.5
+triangleside2.location.z = 6
+
+# Triangle right rotation
+
+triangleside1.keyframe_insert("location", frame=start_frame)
+triangleside1.location.x = -2.5
+triangleside1.location.z = 1.5
+triangleside1.rotation_euler = (-0.2, 0, 0)
+
+triangleside1.keyframe_insert("location", frame=mid_frame)
+triangleside1.location.x = -1
+triangleside1.location.z = 3.5
+triangleside1.rotation_euler = (-0.25, 0, 0)
+
+triangleside1.keyframe_insert("location", frame=end_frame)
+triangleside1.rotation_euler = (-0.45, 0, 0)
+triangleside1.location.x = 3.9
+triangleside1.location.y = -0.5
+triangleside1.location.z = 6
+
 
 # Arm rotation
 arml.keyframe_insert("location", frame=start_frame)
