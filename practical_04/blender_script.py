@@ -26,13 +26,45 @@ suzannebody = bpy.context.scene.objects["SuzanneBody"]
 arml = bpy.context.scene.objects["ArmL"]
 armr = bpy.context.scene.objects["ArmR"]
 
-# Triangle formation
+# Triangle
 triangleside1 = bpy.context.scene.objects["TriangleSide1"]
 triangleside2 = bpy.context.scene.objects["TriangleSide2"]
 triangleside3 = bpy.context.scene.objects["TriangleSide3"]
 
+# Triangle formation
+
 triangleside3.keyframe_insert("location", frame=start_frame)
-console(f"Triangle base moved and rotated")
-triangleside3.keyframe_insert("location", frame=mid_frame)
+triangleside3.location.x = 1.7
 triangleside3.location.z = 1.5
 triangleside3.rotation_euler = (0.2, 0, 0)
+console(f"Triangle base moved and rotated")
+triangleside3.keyframe_insert("location", frame=mid_frame)
+triangleside3.rotation_euler = (0.7, 0, 0)
+triangleside3.location.x = 2.5
+triangleside3.location.z = 2.5
+triangleside3.keyframe_insert("location", frame=end_frame)
+triangleside3.rotation_euler = (1.58, 0, 0)
+triangleside3.location.x = 3.9
+triangleside3.location.z = 5
+
+# Arm rotation
+arml.keyframe_insert("location", frame=start_frame)
+console(f"Left arm rotated down")
+arml.rotation_euler = (-0.2, 0, 0)
+arml.keyframe_insert("location", frame=mid_frame)
+arml.rotation_euler = (0, 0, 0)
+console(f"Left arm moving upwards")
+arml.keyframe_insert("location", frame=end_frame)
+arml.rotation_euler = (0.2, 0, 0)
+console(f"Left arm rotated up")
+
+armr.keyframe_insert("location", frame=start_frame)
+console(f"Right arm rotated down")
+armr.rotation_euler = (0.2, 0, 0)
+armr.keyframe_insert("location", frame=mid_frame)
+armr.rotation_euler = (0, 0, 0)
+console(f"Right arm moving upwards")
+armr.keyframe_insert("location", frame=end_frame)
+armr.rotation_euler = (-0.2, 0, 0)
+console(f"Right arm rotated up")
+
