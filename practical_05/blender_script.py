@@ -21,7 +21,3 @@ mid_frame = 45
 end_frame = 90
 
 # Scene objects
-
-earth = bpy.context.scene.objects["Earth"]
-comet = bpy.context.scene.objects["Comet"]
-moon = bpy.context.scene.objects["Moon"]
