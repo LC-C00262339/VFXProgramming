@@ -16,8 +16,109 @@ from console_blender import *       # After a reload import all the functions of
 
 console("STARTS:")
 
-start_frame = 1
-mid_frame = 45
-end_frame = 90
+# Catch any errors
+try:    
+    console("Accessing Scenes")         
+    result = bpy.data.scenes
+    console(f"Scenes: {result}")
 
-# Scene objects
+    for object in result:
+        console(f"Scene Name: {object.collection.name}")
+
+    console("Accessing Collections")
+    result = bpy.data.collections
+    console(f"Collections: {result}")
+
+    for object in result:
+        console(f"Collection Name: {object.name}")
+
+    # Add custom collection, rename it and add it as a scene child
+    collection = bpy.data.collections.new('Custom Collection')
+    collection.name = "Scripted Objects"
+
+    # Add the Collection to the Scene
+    bpy.context.scene.collection.children.link(collection)
+
+    # Set the new collection as the active one
+    layer_collection = bpy.context.view_layer.layer_collection.children[collection.name]
+    bpy.context.view_layer.active_layer_collection = layer_collection
+
+    # Add the cube mesh from the cube_mesh module
+    cube_object = cube_mesh.create_cube()
+    console(f"Added cube: {cube_object.name}")
+
+    console("Accessing Data-Blocks")
+    console("Accessing Scene Collection")
+    result = bpy.data.objects
+    console(f"Objects in the Scene: {result}")
+
+    console("Accessing Collections in a Scene")
+
+    # Rotation in radians
+    degrees = 45
+    radian_rotation = degrees * pi / 180
+
+    # Setup frame increment
+    frames = 0
+    frame_increment = 5
+    offset = 10 # makes each object look a bit more dynamic
+
+    for result in bpy.data.collections:
+        if result.name == collection.name:
+            for object in result.objects:
+                
+                # Starting Location
+                frames = frame_increment
+                object.keyframe_insert(data_path="location", frame=frames + offset, group="Translation")
+
+                # Transform Location
+                frames += frame_increment
+                object.location = (random.randint(-3, 3), object.location.y, object.location.z) # Translate
+                console(f"Translation => x:{object.location.x}, y:{object.location.y}, x:{object.location.z}")
+                object.keyframe_insert(data_path="location", frame=frames + offset, group="Translation")
+
+                frames += frame_increment
+                object.rotation_euler = (random.random(), random.random(), random.random()) # Rotation
+                console(f"Rotation => x:{object.rotation_euler.x}, y:{object.rotation_euler.y}, x:{object.rotation_euler.z}")
+                
+                frames += frame_increment
+                object.rotation_euler = (radian_rotation, radian_rotation, radian_rotation) # Rotation
+                console(f"Rotation => x:{object.rotation_euler.x}, y:{object.rotation_euler.y}, x:{object.rotation_euler.z}")
+                
+                frames += frame_increment
+                object.rotation_euler = (radians(30), radians(30), radians(30)) # Rotation
+                console(f"Rotation => x:{object.rotation_euler.x}, y:{object.rotation_euler.y}, x:{object.rotation_euler.z}")
+                object.keyframe_insert(data_path="rotation_euler", frame=frames + offset, group="Rotation")
+                
+                frames += frame_increment
+                object.scale = (random.random(), random.random(), random.random()) # Scale
+                console(f"Scale => x:{object.scale.x}, y:{object.scale.y}, x:{object.scale.z}")
+                object.keyframe_insert(data_path="scale", frame=frames + offset, group="Scale")
+
+                frames += frame_increment
+                object.scale = (random.random(), random.random(), random.random()) # Scale
+                console(f"Scale => x:{object.scale.x}, y:{object.scale.y}, x:{object.scale.z}")
+                object.keyframe_insert(data_path="scale", frame=frames + offset, group="Scale")
+
+                frames += frame_increment
+                object.scale = (random.random(), random.random(), random.random()) # Scale
+                console(f"Scale => x:{object.scale.x}, y:{object.scale.y}, x:{object.scale.z}")
+                object.keyframe_insert(data_path="scale", frame=frames + offset, group="Scale")
+
+                frames += frame_increment
+                object.scale = (random.random(), random.random(), random.random()) # Scale
+                console(f"Scale => x:{object.scale.x}, y:{object.scale.y}, x:{object.scale.z}")
+                object.keyframe_insert(data_path="scale", frame=frames + offset, group="Scale")
+
+                offset += 1
+
+    # Save the blender file
+    bpy.ops.wm.save_as_mainfile(filepath=bpy.data.filepath)
+
+    # Close the Blender file (this is typically handled by Blender automatically)
+    bpy.ops.wm.quit_blender()
+
+    console("ENDS:")
+
+except Exception as e:
+    console(e)
