@@ -116,7 +116,7 @@ try:
     bpy.ops.wm.save_as_mainfile(filepath=bpy.data.filepath)
 
     # Close the Blender file (this is typically handled by Blender automatically)
-    bpy.ops.wm.quit_blender()
+   # bpy.ops.wm.quit_blender()
 
     console("ENDS:")
 
