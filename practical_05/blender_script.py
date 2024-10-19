@@ -4,12 +4,14 @@ import os                           # Operating System Module
 import sys                          # System Module
 import importlib                    # Importing Modules Module
 from math import pi, radians        # Transformations Rotation
-import cube_mesh
+
 
 # Find out root directory of Blender Project
 directory = os.path.dirname(bpy.data.filepath)
 if not directory in sys.path:       # Check if this directory is in system Path
     sys.path.append(directory)      # Add Directory to Discoverable Path
+   
+import cube_mesh
 
 import console_blender              # Import Custom Write to Console
 importlib.reload(console_blender)   # Add custom module to the Blender Project (now that directory is know)
