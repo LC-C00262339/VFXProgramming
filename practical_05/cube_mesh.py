@@ -40,7 +40,7 @@ faces = [
     [1, 3, 7, 5]   # Back face
 ]
 
-pyramid_vertices = [ 
+triangle_vertices = [ 
     (-1, -1, -1),
     (-1, 0, 1),
     (-1 ,1, -1),
@@ -49,22 +49,24 @@ pyramid_vertices = [
     (1, 1, -1)
 ]
 
-pyramid_edges = [
-    ((-1, -1, -1), (-1, -1, 1)),
-    ((-1, 0, -1), (-1, 0, 1)),
-    ((-1, -1, -1), (-1, 1, -1)),
-    ((1, -1, -1))
-]
+#triangle_edges = [
+#    ((-1, -1, -1), (-1, -1, 1)),
+#    ((-1, 0, -1), (-1, 0, 1)),
+#   ((-1, -1, -1), (-1, 1, -1)),
+#    ((1, -1, -1))
+#]
 
-pyramid_faces = [ 
-    (4, 5, 2), 
-    (1, 0, 3),
-    (2, 5, 3),
-    (4, 3, 5),
-    (1, 2, 0),
-    (1, 4, 2),
-    (4, 1, 3),
-    (0, 2, 3) 
+# Edges are likely not needed
+
+triangle_faces = [ 
+    [4, 5, 2], 
+    [1, 0, 3],
+    [2, 5, 3],
+    [4, 3, 5],
+    [1, 2, 0],
+    [1, 4, 2],
+    [4, 1, 3],
+    [0, 2, 3] 
 ]
 
 
@@ -92,6 +94,28 @@ def create_cube():
 
     # Create the mesh from the vertices and faces
     mesh.from_pydata(vertices, [], faces)
+    mesh.update()
+
+    return obj
+
+# Triangle mesh creation
+
+def print_triangle():
+    print("Triangle vertices:")
+    for vertex in triangle_vertices:
+        print(vertex)
+
+    print("\nTriangle Faces:")
+    for face in triangle_faces:
+        print(" → ".join(map(str, [triangle_vertices[i] for i in face])))
+
+def create_triangle():
+    mesh = bpy.data.meshes.new('Custom triangle mesh')
+    obj = bpy.data.objects.new('Custom triangle mesh', mesh)
+
+    bpy.context.collections.objects.link(obj)
+
+    mesh.from_pydata(triangle_vertices, [], triangle_faces)
     mesh.update()
 
     return obj

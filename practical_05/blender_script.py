@@ -47,6 +47,10 @@ try:
     cube_object = cube_mesh.create_cube()
     console(f"Added cube: {cube_object.name}")
 
+    # Add the triangular prism mesh 
+    triangle_object = triangle_mesh.create_triangle()
+    console(f"Added triangle: {triangle_object.name}")
+
     console("Accessing Data-Blocks")
     console("Accessing Scene Collection")
     result = bpy.data.objects
