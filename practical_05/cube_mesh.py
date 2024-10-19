@@ -113,7 +113,7 @@ def create_triangle():
     mesh = bpy.data.meshes.new('Custom triangle mesh')
     obj = bpy.data.objects.new('Custom triangle mesh', mesh)
 
-    bpy.context.collections.objects.link(obj)
+    bpy.context.collection.objects.link(obj)
 
     mesh.from_pydata(triangle_vertices, [], triangle_faces)
     mesh.update()

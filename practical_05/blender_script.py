@@ -4,6 +4,7 @@ import os                           # Operating System Module
 import sys                          # System Module
 import importlib                    # Importing Modules Module
 from math import pi, radians        # Transformations Rotation
+import cube_mesh
 
 # Find out root directory of Blender Project
 directory = os.path.dirname(bpy.data.filepath)
@@ -48,7 +49,7 @@ try:
     console(f"Added cube: {cube_object.name}")
 
     # Add the triangular prism mesh 
-    triangle_object = triangle_mesh.create_triangle()
+    triangle_object = cube_mesh.create_triangle()
     console(f"Added triangle: {triangle_object.name}")
 
     console("Accessing Data-Blocks")
