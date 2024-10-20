@@ -31,10 +31,13 @@ end_frame = 90
 
 # Background
 
-plane = cube_mesh.create_plane()
+plane = cube_mesh.create_plane() 
 plane.location = (-5, 0, 0)
 plane.rotation_euler = (0, radians(90), 0)
 console(f"Added background plane")
+
+plane_b = cube_mesh.create_plane()
+plane_b.location = (0, 0, -5)
 
 # Top point
 
