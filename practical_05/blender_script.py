@@ -29,6 +29,13 @@ start_frame = 1
 mid_frame = 45
 end_frame = 90
 
+# Background
+
+plane = cube_mesh.create_plane()
+plane.location = (-5, 0, 0)
+plane.rotation_euler = (0, radians(90), 0)
+console(f"Added background plane")
+
 # Top point
 
 triangle_1 = cube_mesh.create_triangle()
@@ -80,38 +87,47 @@ triangle_1.keyframe_insert("location", frame=end_frame)
 
 triangle_2.rotation_euler = (0, 0, 0) # Rotation at start frame
 triangle_2.keyframe_insert("location", frame=start_frame) # Start
+triangle_2.keyframe_insert("rotation_euler", frame=start_frame)
 
 triangle_2.location = (0, -2.5, -3) # -2.5 on Y axis and -3 on Z axis at mid frame
-triangle_2.rotation_euler(radians(-90), 0, 0) # -90 rotation at mid frame
+triangle_2.rotation_euler = (radians(-90), 0, 0) # -90 rotation at mid frame
 triangle_2.keyframe_insert("location", frame=mid_frame) # Middle
+triangle_2.keyframe_insert("rotation_euler", frame=mid_frame)
 
 triangle_2.location = (0, 0, -2) # -2 on Z axis at end frame
-triangle_2.rotation_euler(radians(-180), 0, 0) # -180 rotation at mid frame
+triangle_2.rotation_euler = (radians(-180), 0, 0) # -180 rotation at mid frame
 triangle_2.keyframe_insert("location", frame=end_frame)
+triangle_2.keyframe_insert("rotation_euler", frame=end_frame)
 
 # Left triangle animation
 
 
 triangle_4.rotation_euler = (0, 0, 0) # Rotation at start frame
-triangle_4.keyframe_insert("location", "rotation_euler" frame=start_frame) # Start
+triangle_4.keyframe_insert("location", frame=start_frame) # Start
+triangle_4.keyframe_insert("rotation_euler", frame=start_frame)
 
 triangle_4.location = (0, 3, 0) # 3 on Y axis at mid frame
-triangle_4.rotation_euler(radians(-45), 0, 0) # -45 rotation at mid frame
-triangle_4.keyframe_insert("location", "rotation_euler", frame=mid_frame) # Middle
+triangle_4.rotation_euler = (radians(-45), 0, 0) # -45 rotation at mid frame
+triangle_4.keyframe_insert("location", frame=mid_frame) # Middle
+triangle_4.keyframe_insert("rotation_euler", frame=mid_frame)
 
 triangle_4.location = (0, 2, 0) # 2 on Y axis at end frame
-triangle_4.rotation_euler(radians(-90), 0, 0) # -90 rotation at mid frame
-triangle_4.keyframe_insert("location", "rotation_euler", frame=end_frame)
+triangle_4.rotation_euler = (radians(-90), 0, 0) # -90 rotation at mid frame
+triangle_4.keyframe_insert("location", frame=end_frame)
+triangle_4.keyframe_insert("rotation_euler", frame=end_frame)
 
 # Right triangle anim
 
 triangle_5.rotation_euler = (0, 0, 0) # Rotation at start frame
-triangle_5.keyframe_insert("location", "rotation_euler", frame=start_frame) # Start
+triangle_5.keyframe_insert("location",  frame=start_frame) # Start
+triangle_5.keyframe_insert("rotation_euler", frame=start_frame)
 
 triangle_5.location = (0, -3, 0) # -3 on Y axis at mid frame
-triangle_5.rotation_euler(radians(45), 0, 0) # 45 rotation at mid frame
-triangle_5.keyframe_insert("location", "rotation_euler", frame=mid_frame) # Middle
+triangle_5.rotation_euler = (radians(45), 0, 0) # 45 rotation at mid frame
+triangle_5.keyframe_insert("location", frame=mid_frame) # Middle
+triangle_5.keyframe_insert("rotation_euler", frame=mid_frame)
 
-triangle_5.location = (0, 2, 0) # -2 on Y axis at end frame
-triangle_5.rotation_euler(radians(90), 0, 0) # 90 rotation at mid frame
-triangle_5.keyframe_insert("location", "rotation_euler", frame=end_frame)
+triangle_5.location = (0, -2, 0) # -2 on Y axis at end frame
+triangle_5.rotation_euler = (radians(90), 0, 0) # 90 rotation at mid frame
+triangle_5.keyframe_insert("location", frame=end_frame)
+triangle_5.keyframe_insert("rotation_euler", frame=end_frame)

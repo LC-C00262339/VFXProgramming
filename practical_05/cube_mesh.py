@@ -69,6 +69,16 @@ triangle_faces = [
     [0, 2, 3] 
 ]
 
+plane_vertices = [
+    (-5, 5, 0),
+    (5, 5, 0),
+    (5, -5, 0),
+    (-5, -5, 0)
+]
+
+plane_faces = [
+    [0, 1, 2, 3]
+]
 
 def print_cube():
     # Output the cube definition
@@ -118,4 +128,24 @@ def create_triangle():
     mesh.from_pydata(triangle_vertices, [], triangle_faces)
     mesh.update()
 
+    return obj
+
+def print_plane():
+    print("Plane vertices:")
+    for vertex in plane_vertices:
+        print(vertex)
+
+    print("\nPlane faces:")
+    for face in plane_faces:
+        print(" → ".join(map(str, [plane_vertices[i] for i in face])))
+
+def create_plane():
+    mesh = bpy.data.meshes.new('Plane')
+    obj = bpy.data.objects.new('Plane', mesh)
+
+    bpy.context.collection.objects.link(obj)
+
+    mesh.from_pydata(plane_vertices, [], plane_faces)
+    mesh.update()
+    
     return obj
