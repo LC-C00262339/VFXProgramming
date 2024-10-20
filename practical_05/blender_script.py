@@ -131,3 +131,15 @@ triangle_5.location = (0, -2, 0) # -2 on Y axis at end frame
 triangle_5.rotation_euler = (radians(90), 0, 0) # 90 rotation at mid frame
 triangle_5.keyframe_insert("location", frame=end_frame)
 triangle_5.keyframe_insert("rotation_euler", frame=end_frame)
+
+# The following code unwraps and wraps objects
+
+bpy.ops.object.select_all(action='DESELECT')
+obj = bpy.data.objects['Triangle']
+bpy.context.view_layer.objects.active = obj
+obj.select_set(True)
+
+bpy.ops.object.mode_set(mode='EDIT')
+bpy.ops.uv.unwrap(method='ANGLE_BASED')
+bpy.ops.object.mode_set(mode='OBJECT')
+
