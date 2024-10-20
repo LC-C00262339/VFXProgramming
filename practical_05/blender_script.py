@@ -19,11 +19,43 @@ from console_blender import *       # After a reload import all the functions of
 
 console("STARTS:")
 
+# Set up frame increment
+
+frames = 0
+frame_increment = 5
+offset = 10 # makes each object look a bit more dynamic
+
+# Top point
 
 triangle_1 = cube_mesh.create_triangle()
+triangle_1.location = (0, 0, 5)
 console(f"Added triangle: {triangle_1.name}")
+
+# Right bottom point
 
 
 triangle_2 = cube_mesh.create_triangle()
-triangle_2.location = (0, 0, -3)
+triangle_2.location = (0, 5, -5)
+# triangle_2.rotation_euler = (radians(90), 0, 0)
 console(f"Added triangle: {triangle_2.name}")
+
+# Left bottom point
+
+
+triangle_3 = cube_mesh.create_triangle()
+triangle_3.location = (0, -5, -5)
+console(f"Added triangle: {triangle_3.name}")
+
+# Right middle point
+
+triangle_4 = cube_mesh.create_triangle()
+triangle_4.location = (0, 5, 0)
+# triangle_4.rotation_euler = (radians(-90), 0, 0)
+console(f"Added triangle: {triangle_4.name}")
+
+# Left middle point
+
+triangle_5 = cube_mesh.create_triangle()
+triangle_5.location = (0, -5, 0)
+# triangle_5.rotation_euler = (radians(90), 0, 0)
+console(f"Added triangle: {triangle_5.name}")
