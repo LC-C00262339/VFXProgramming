@@ -110,8 +110,8 @@ def print_triangle():
         print(" → ".join(map(str, [triangle_vertices[i] for i in face])))
 
 def create_triangle():
-    mesh = bpy.data.meshes.new('Custom triangle mesh')
-    obj = bpy.data.objects.new('Custom triangle mesh', mesh)
+    mesh = bpy.data.meshes.new('Triangle')
+    obj = bpy.data.objects.new('Triangle', mesh)
 
     bpy.context.collection.objects.link(obj)
 
