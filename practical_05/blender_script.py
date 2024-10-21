@@ -211,3 +211,27 @@ bpy.ops.object.mode_set(mode='EDIT')
 bpy.ops.uv.unwrap(method='ANGLE_BASED')
 bpy.ops.object.mode_set(mode='OBJECT')
 console(f"Object(s) unwrapped")
+
+# Planes
+
+
+bpy.ops.object.select_all(action='DESELECT')
+obj = bpy.data.objects['Plane']
+bpy.context.view_layer.objects.active = obj
+obj.select_set(True)
+
+bpy.ops.object.mode_set(mode='EDIT')
+bpy.ops.uv.unwrap(method='ANGLE_BASED')
+bpy.ops.object.mode_set(mode='OBJECT')
+console(f"Plane(s) unwrapped")
+
+
+bpy.ops.object.select_all(action='DESELECT')
+obj = bpy.data.objects['Plane.001']
+bpy.context.view_layer.objects.active = obj
+obj.select_set(True)
+
+bpy.ops.object.mode_set(mode='EDIT')
+bpy.ops.uv.unwrap(method='ANGLE_BASED')
+bpy.ops.object.mode_set(mode='OBJECT')
+console(f"Plane(s) unwrapped")
