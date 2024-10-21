@@ -159,7 +159,7 @@ triangle_5.rotation_euler = (radians(90), 0, 0) # 90 rotation at mid frame
 # triangle_5.scale = (1, 1, 1)
 triangle_5.keyframe_insert("location", frame=end_frame)
 triangle_5.keyframe_insert("rotation_euler", frame=end_frame)
-#triangle_5.keyframe_insert("scale", frame=start_frame)
+#triangle_5.keyframe_insert("scale", frame=end_frame)
 
 # The following code unwraps and wraps objects
 
@@ -171,4 +171,4 @@ obj.select_set(True)
 bpy.ops.object.mode_set(mode='EDIT')
 bpy.ops.uv.unwrap(method='ANGLE_BASED')
 bpy.ops.object.mode_set(mode='OBJECT')
-
+console(f"Object(s) unwrapped")
