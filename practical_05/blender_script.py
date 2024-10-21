@@ -163,8 +163,47 @@ triangle_5.keyframe_insert("rotation_euler", frame=end_frame)
 
 # The following code unwraps and wraps objects
 
+# Top triangle
+
 bpy.ops.object.select_all(action='DESELECT')
 obj = bpy.data.objects['Triangle']
+bpy.context.view_layer.objects.active = obj
+obj.select_set(True)
+
+bpy.ops.object.mode_set(mode='EDIT')
+bpy.ops.uv.unwrap(method='ANGLE_BASED')
+bpy.ops.object.mode_set(mode='OBJECT')
+console(f"Object(s) unwrapped")
+
+# Bottom triangle
+
+
+bpy.ops.object.select_all(action='DESELECT')
+obj = bpy.data.objects['Triangle.001']
+bpy.context.view_layer.objects.active = obj
+obj.select_set(True)
+
+bpy.ops.object.mode_set(mode='EDIT')
+bpy.ops.uv.unwrap(method='ANGLE_BASED')
+bpy.ops.object.mode_set(mode='OBJECT')
+console(f"Object(s) unwrapped")
+
+# Left triangle
+
+bpy.ops.object.select_all(action='DESELECT')
+obj = bpy.data.objects['Triangle.002']
+bpy.context.view_layer.objects.active = obj
+obj.select_set(True)
+
+bpy.ops.object.mode_set(mode='EDIT')
+bpy.ops.uv.unwrap(method='ANGLE_BASED')
+bpy.ops.object.mode_set(mode='OBJECT')
+console(f"Object(s) unwrapped")
+
+# Right triangle
+
+bpy.ops.object.select_all(action='DESELECT')
+obj = bpy.data.objects['Triangle.003']
 bpy.context.view_layer.objects.active = obj
 obj.select_set(True)
 
