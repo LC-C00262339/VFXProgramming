@@ -20,6 +20,12 @@ material = bpy.data.materials.new(name='lighthouse') # Lighthouse building exter
 material.diffuse_color = (1.0, 0.051, 0.040, 1)
 cylinder.data.materials.append(material) # Apply texture to cylinder
 
+roof = bpy.data.materials.new(name='lightroof') # Lighthouse roof
+# RGB = 0.05, 0.05, 0.05, 1
+roof.diffuse_color = (0.050, 0.050, 0.050, 1)
+roof.metallic = 0.7 # Add metallic shine to roof
+cone.data.materials.append(roof) # Apply texture to roof
+
 
 # bpy.ops.mesh.primitive_cube_add(location=(0, 0, 3.5) # Create cube (inside)
 # cube = bpy.context.object
