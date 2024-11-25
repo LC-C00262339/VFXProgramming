@@ -1,4 +1,8 @@
 import bpy
+import os
+import sys
+import importlib
+from math import pi, radians
 
 # Code should create a lighthouse
 
@@ -24,7 +28,16 @@ roof = bpy.data.materials.new(name='lightroof') # Lighthouse roof
 # RGB = 0.05, 0.05, 0.05, 1
 roof.diffuse_color = (0.050, 0.050, 0.050, 1)
 roof.metallic = 0.7 # Add metallic shine to roof
+roof.roughness = 0.75 # Affect how much light is diffused onto object
+
 cone.data.materials.append(roof) # Apply texture to roof
+
+# Add lighthouse light
+
+bpy.ops.object.light_add(type='SPOT', location=(0, 0, 2.5), rotation=(0, radians(90), 0)) # Add spotlight
+light = bpy.context.object 
+light.data.energy = 500 # Power watt of light
+
 
 
 # bpy.ops.mesh.primitive_cube_add(location=(0, 0, 3.5) # Create cube (inside)
