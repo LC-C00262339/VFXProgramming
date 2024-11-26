@@ -17,6 +17,12 @@ cone = bpy.context.object
 bpy.ops.mesh.primitive_cylinder_add(location=(0, 0, 2.5), vertices=8, radius=0.9, depth=1) # Create octagonal prism using cylinder (inside)
 window = bpy.context.object
 
+# Add a few rocks with randomized fractals for roughness
+
+bpy.ops.mesh.primitive_uv_sphere_add(location=(-1, 0, 0), vertices=8, rings=8, radius=0.75, name='ROCK')
+rock = bpy.context.objects
+rock.subdivide(number_cuts=1, fractal=3)
+
 # Create object materials
 
 material = bpy.data.materials.new(name='lighthouse') # Lighthouse building exterior 
@@ -37,8 +43,3 @@ cone.data.materials.append(roof) # Apply texture to roof
 bpy.ops.object.light_add(type='SPOT', location=(0, 0, 2.5), rotation=(0, radians(90), 0)) # Add spotlight
 light = bpy.context.object 
 light.data.energy = 500 # Power watt of light
-
-
-
-# bpy.ops.mesh.primitive_cube_add(location=(0, 0, 3.5) # Create cube (inside)
-# cube = bpy.context.object
