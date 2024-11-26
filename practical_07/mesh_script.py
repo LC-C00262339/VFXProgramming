@@ -19,8 +19,8 @@ window = bpy.context.object
 
 # Add a few rocks with randomized fractals for roughness
 
-bpy.ops.mesh.primitive_uv_sphere_add(location=(-1, 0, 0), vertices=8, rings=8, radius=0.75, name='ROCK')
-rock = bpy.context.objects
+bpy.ops.mesh.primitive_uv_sphere_add(location=(-1, 0, 0), segments=8, ring_count=8, radius=0.75)
+rock = bpy.context.object
 rock.subdivide(number_cuts=1, fractal=3)
 
 # Create object materials
