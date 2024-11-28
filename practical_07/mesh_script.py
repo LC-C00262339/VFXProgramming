@@ -17,10 +17,13 @@ cone = bpy.context.object
 bpy.ops.mesh.primitive_cylinder_add(location=(0, 0, 2.5), vertices=8, radius=0.9, depth=1) # Create octagonal prism using cylinder (inside)
 window = bpy.context.object
 
-# Add ground
+# Add ground and sea
 
-bpy.ops.mesh.primitive_cube_add(location=(0, 0, -2.5), scale=(10, 10, 0.5))
+bpy.ops.mesh.primitive_cube_add(location=(2.5, 0, -2.5), scale=(10, 10, 0.5))
 ground = bpy.context.object
+
+# bpy.ops.mesh.primitive_cube_add(location=(2.5, 0, 2.5), scale=(5, 5, 0.5)
+# water = bpy.context.object
 
 # Add a few rocks with randomized fractals for roughness
 
@@ -48,6 +51,10 @@ grass = bpy.data.materials.new(name='grass') # Ground
 # RGB = 0.125, 0.7, 0.1, 1
 grass.diffuse_color = (0.125, 0.7, 0.1, 1)
 ground.data.materials.append(grass)
+
+# water = bpy.data.materials.new(name='water') # Water
+# water.diffuse_color = (0, 0.025, 0.51)
+# water.data.materials.append(water)
 
 # Add lighthouse light
 
