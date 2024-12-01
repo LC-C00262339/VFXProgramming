@@ -53,13 +53,39 @@ bpy.context.scene.frame_end = 150
 
 # Modifiers
 
-modifiers = [
-    {'name': 'Array', 'type': 'ARRAY', 'properties': {'count': 3, 'relative_offset_displace': (2, 0, 0)}}, # Duplicate object
-    {'name': 'Bevel', 'type': 'BEVEL', 'properties': {'affect': 'VERTICES', 'amount': 0.5, 'segments': 1}}, # Bevels cube mesh
-    {'name': 'Build', 'type': 'BUILD', 'properties': {'frame_start': 10, 'frame_duration': 15}}, # Creates mesh during frames
-    {'name': 'Mirror', 'type': 'MIRROR'}, # Mirror objects
-    {'name': 'Subdivision', 'type': 'SUBSURF', 'properties': {'levels': 3}} # Subdivide
-]
+cube = cube.modifiers.new(name="Bevel", type="BEVEL", affect="VERTICES", amount=0.5, segments=1)
+cylinder = cylinder.modifiers.new(name="Build", type="BUILD", frame_start=10, frame_duration=40)
+spheremodifier = sphere.modifiers.new(name="Subdivision", type="SUBSURF", levels=3)
+octamodifier = octagon.modifiers.new(name="Array", type="ARRAY", count=2, relative_offset_displace=(2, 0, 0))
+conemodifier = cone.modifiers.new(name="Mirror", type="MIRROR")
+
+# Object materials/textures
+
+cube = bpy.data.materials.new(name='cube')
+cube.diffuse_color = (255, 0, 255, 1)
+cube.data.materials.append(cube)
+
+spheremtrl = bpy.data.materials.new(name='sphere')
+spheremtrl.diffuse_color = (0, 128, 255, 1)
+sphere.data.materials.append(sphere)
+
+octamtrl = bpy.data.materials.new(name='octagon')
+octamtrl.diffuse_color = (64, 0, 255, 1)
+octagon.data.materials.append(octagon)
+
+# modifiers = [
+#     {'name': 'Array', 'type': 'ARRAY', 'properties': {'count': 3, 'relative_offset_displace': (2, 0, 0)}}, # Duplicate object
+#    {'name': 'Bevel', 'type': 'BEVEL', 'properties': {'affect': 'VERTICES', 'amount': 0.5, 'segments': 1}}, # Bevels cube mesh
+#    {'name': 'Build', 'type': 'BUILD', 'properties': {'frame_start': 10, 'frame_duration': 15}}, # Creates mesh during frames
+#    {'name': 'Mirror', 'type': 'MIRROR'}, # Mirror objects
+#    {'name': 'Subdivision', 'type': 'SUBSURF', 'properties': {'levels': 3}} # Subdivide
+#]
+
+#for mod in modifiers:
+#    modifier = cube.modifiers.new(name=mod['name'], type=mod['type'])
+#    # cubemodifier = cube.modifiers.new(name=mod['Build'], type=mod['BUILD'])
+#   for prop, value in mod.get('properties', {}).items():
+#        setattr(modifier, prop, value)
 
 
 # Animation
