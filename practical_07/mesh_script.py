@@ -55,14 +55,15 @@ bpy.context.scene.frame_end = 150
 
 cube = cube.modifiers.new(name="Bevel", type="BEVEL", affect="VERTICES", amount=0.5, segments=1)
 cylinder = cylinder.modifiers.new(name="Build", type="BUILD", frame_start=10, frame_duration=40)
-spheremodifier = sphere.modifiers.new(name="Subdivision", type="SUBSURF", levels=3)
+spheremodifier = sphere.modifiers.new(name="Subdivision", type="SUBSURF")
+spheremodifier.levels = 2
 octamodifier = octagon.modifiers.new(name="Array", type="ARRAY", count=2, relative_offset_displace=(2, 0, 0))
 conemodifier = cone.modifiers.new(name="Mirror", type="MIRROR")
 
 # Object materials/textures
 
-cube = bpy.data.materials.new(name='cube')
-cube.diffuse_color = (255, 0, 255, 1)
+cubemtrl = bpy.data.materials.new(name='cube')
+cubemtrl.diffuse_color = (255, 0, 255, 1)
 cube.data.materials.append(cube)
 
 spheremtrl = bpy.data.materials.new(name='sphere')
