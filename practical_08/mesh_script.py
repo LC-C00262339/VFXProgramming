@@ -81,25 +81,35 @@ conemodifier.use_axis[2] = True
 conemodifier.use_bisect_axis[2] = True
 
 
+# Object Shaders
+
+cubeshdr = bpy.data.materials.new(name='cube_shader')
+cubeshdr.use_nodes = True
+nodes = cubeshdr.node_tree.nodes
+bsdf = nodes.get("Glossy BSDF")
+bsdf.inputs["Base Color"].default_value = (0.8, 0, 0.7, 1)
+cube.data.materials.append(cubeshdr)
+
+
 # Object materials/textures
 
-cubemtrl = bpy.data.materials.new(name='cube')
-cubemtrl.diffuse_color = (0.8, 0, 0.7, 1)
-cube.data.materials.append(cubemtrl)
+# cubemtrl = bpy.data.materials.new(name='cube')
+# cubemtrl.diffuse_color = (0.8, 0, 0.7, 1)
+# cube.data.materials.append(cubemtrl)
 
-spheremtrl = bpy.data.materials.new(name='sphere')
-spheremtrl.diffuse_color = (0.283, 0.122, 0.801, 1)
-sphere.data.materials.append(spheremtrl)
+# spheremtrl = bpy.data.materials.new(name='sphere')
+# spheremtrl.diffuse_color = (0.283, 0.122, 0.801, 1)
+# sphere.data.materials.append(spheremtrl)
 
-octamtrl = bpy.data.materials.new(name='octagon')
-octamtrl.diffuse_color = (0, 0.8, 0.8, 1)
-octagon.data.materials.append(octamtrl)
+# octamtrl = bpy.data.materials.new(name='octagon')
+# octamtrl.diffuse_color = (0, 0.8, 0.8, 1)
+# octagon.data.materials.append(octamtrl)
 
-cylinder.data.materials.append(octamtrl)
+# cylinder.data.materials.append(octamtrl)
 
-conemtrl = bpy.data.materials.new(name='cone')
-conemtrl.diffuse_color = (0.8, 0.3, 0, 1)
-cone.data.materials.append(conemtrl)
+# conemtrl = bpy.data.materials.new(name='cone')
+# conemtrl.diffuse_color = (0.8, 0.3, 0, 1)
+# cone.data.materials.append(conemtrl)
 
 
 # modifiers = [
