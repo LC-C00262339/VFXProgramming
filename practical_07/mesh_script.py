@@ -17,6 +17,12 @@ def animate_object(obj, frame, location=None, rotation=None, scale=None):
         obj.scale = scale
         obj.keyframe_insert(data_path="scale", frame=frame)
 
+# Create camera
+
+bpy.ops.object.camera_add(location=(10, -10, 10)) 
+camera = bpy.context.object 
+bpy.context.scene.camera = camera 
+
 # Create objects
 
 bpy.ops.mesh.primitive_cube_add(location=(0, 0, 1)) # Create cube
@@ -70,6 +76,10 @@ octamodifier.count = 2
 octamodifier.relative_offset_displace = (1, 0, -2)
 
 conemodifier = cone.modifiers.new(name="Mirror", type="MIRROR")
+conemodifier.use_axis[0] = True
+conemodifier.use_axis[2] = True
+conemodifier.use_bisect_axis[2] = True
+
 
 # Object materials/textures
 
@@ -85,7 +95,7 @@ octamtrl = bpy.data.materials.new(name='octagon')
 octamtrl.diffuse_color = (0, 0.8, 0.8, 1)
 octagon.data.materials.append(octamtrl)
 
-octagon.data.materials.append(octamtrl)
+cylinder.data.materials.append(octamtrl)
 
 conemtrl = bpy.data.materials.new(name='cone')
 conemtrl.diffuse_color = (0.8, 0.3, 0, 1)
@@ -114,10 +124,10 @@ animate_object(sphere, frame=50, location=(1, -1.5, 2.5), rotation=(0, 0, 0), sc
 animate_object(sphere, frame=100, location=(1, 1.5, 3), rotation=(0, 0, 0), scale=(1, 1, 1))
 animate_object(sphere, frame=150, location=(1, 3, 3.5), rotation=(0, 0, 0), scale=(1, 1, 1))
 
-animate_object(cone, frame=1, location=(0, 3, 1.1), rotation=(0, 0, 0), scale=(1, 1, 1))
-animate_object(cone, frame=50, location=(0, 3, 1.1), rotation=(0, 0, math.radians(90)), scale=(1, 1, 1))
-animate_object(cone, frame=100, location=(0, 3, 1.1), rotation=(0, 0, math.radians(180)), scale=(1, 1, 1))
-animate_object(cone, frame=150, location=(0, 3, 1.1), rotation=(0, 0, math.radians(90)), scale=(1, 1, 1))
+animate_object(cone, frame=1, location=(0, 5, 1.1), rotation=(0, 0, 0), scale=(1, 1, 1))
+animate_object(cone, frame=50, location=(0, 5, 1.1), rotation=(0, 0, math.radians(90)), scale=(1, 1, 1))
+animate_object(cone, frame=100, location=(0, 5, 1.1), rotation=(0, 0, math.radians(180)), scale=(1, 1, 1))
+animate_object(cone, frame=150, location=(0, 5, 1.1), rotation=(0, 0, math.radians(90)), scale=(1, 1, 1))
 
 animate_object(octagon, frame=1, location=(0, 3, 1.1), rotation=(0, 0, 0), scale=(1, 1, 1))
 animate_object(octagon, frame=50, location=(0, 3, 1.1), rotation=(0, 0, math.radians(90)), scale=(1, 1, 1))
