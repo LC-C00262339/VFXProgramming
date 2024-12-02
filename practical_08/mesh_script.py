@@ -86,7 +86,7 @@ conemodifier.use_bisect_axis[2] = True
 cubeshdr = bpy.data.materials.new(name='cube_shader')
 cubeshdr.use_nodes = True
 nodes = cubeshdr.node_tree.nodes
-bsdf = nodes.get("Glossy BSDF")
+bsdf = nodes.get("Principled BSDF")
 bsdf.inputs["Base Color"].default_value = (0.8, 0, 0.7, 1)
 cube.data.materials.append(cubeshdr)
 
