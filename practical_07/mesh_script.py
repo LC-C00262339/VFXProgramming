@@ -19,7 +19,7 @@ def animate_object(obj, frame, location=None, rotation=None, scale=None):
 
 # Create objects
 
-bpy.ops.mesh.primitive_cube_add(location=(0, 1, 1)) # Create cube
+bpy.ops.mesh.primitive_cube_add(location=(0, 0, 1)) # Create cube
 cube = bpy.context.object
 
 bpy.ops.mesh.primitive_cube_add(location=(-2.6, 0, 2.4), scale=(0.1, 6, 3))
@@ -53,26 +53,42 @@ bpy.context.scene.frame_end = 150
 
 # Modifiers
 
-cube = cube.modifiers.new(name="Bevel", type="BEVEL", affect="VERTICES", amount=0.5, segments=1)
-cylinder = cylinder.modifiers.new(name="Build", type="BUILD", frame_start=10, frame_duration=40)
+cubemodifier = cube.modifiers.new(name="Bevel", type="BEVEL") # affect="VERTICES", amount=0.5, segments=1)
+cubemodifier.affect = "VERTICES"
+cubemodifier.width = 0.5
+cubemodifier.segments = 1
+
+cylindermodifier = cylinder.modifiers.new(name="Build", type="BUILD") # frame_start=10, frame_duration=40)
+cylindermodifier.frame_start = 10
+cylindermodifier.frame_duration = 40
+
 spheremodifier = sphere.modifiers.new(name="Subdivision", type="SUBSURF")
 spheremodifier.levels = 2
-octamodifier = octagon.modifiers.new(name="Array", type="ARRAY", count=2, relative_offset_displace=(2, 0, 0))
+
+octamodifier = octagon.modifiers.new(name="Array", type="ARRAY") # count=2, relative_offset_displace=(2, 0, 0))
+octamodifier.count = 2 
+octamodifier.relative_offset_displace = (-3, 0, 0)
+
 conemodifier = cone.modifiers.new(name="Mirror", type="MIRROR")
 
 # Object materials/textures
 
 cubemtrl = bpy.data.materials.new(name='cube')
-cubemtrl.diffuse_color = (255, 0, 255, 1)
-cube.data.materials.append(cube)
+cubemtrl.diffuse_color = (0.8, 0, 0.7, 1)
+cube.data.materials.append(cubemtrl)
 
 spheremtrl = bpy.data.materials.new(name='sphere')
-spheremtrl.diffuse_color = (0, 128, 255, 1)
-sphere.data.materials.append(sphere)
+spheremtrl.diffuse_color = (0.283, 0.122, 0.801, 1)
+sphere.data.materials.append(spheremtrl)
 
 octamtrl = bpy.data.materials.new(name='octagon')
-octamtrl.diffuse_color = (64, 0, 255, 1)
-octagon.data.materials.append(octagon)
+octamtrl.diffuse_color = (0, 0.8, 0.8, 1)
+octagon.data.materials.append(octamtrl)
+
+conemtrl = bpy.data.materials.new(name='cone')
+conemtrl.diffuse_color = (0.8, 0.3, 0, 1)
+cone.data.materials.append(conemtrl)
+
 
 # modifiers = [
 #     {'name': 'Array', 'type': 'ARRAY', 'properties': {'count': 3, 'relative_offset_displace': (2, 0, 0)}}, # Duplicate object
@@ -102,7 +118,7 @@ animate_object(cone, frame=100, location=(0, 3, 1.1), rotation=(0, 0, math.radia
 animate_object(cone, frame=150, location=(0, 3, 1.1), rotation=(0, 0, math.radians(90)), scale=(1, 1, 1))
 
 
-animate_object(octagon, frame=1, location=(0, 3, 1.1), rotation=(0, 0, 0), scale=(1, 1, 1))
-animate_object(octagon, frame=50, location=(0, 3, 1.1), rotation=(0, 0, math.radians(90)), scale=(1, 1, 1))
-animate_object(octagon, frame=100, location=(0, 3, 1.1), rotation=(0, 0, math.radians(180)), scale=(1, 1, 1))
-animate_object(octagon, frame=150, location=(0, 3, 1.1), rotation=(0, 0, math.radians(90)), scale=(1, 1, 1))
+animate_object(octagon, frame=1, location=(0, 3, 1.1), rotation=(math.radians(90), 0, 0), scale=(1, 1, 1))
+animate_object(octagon, frame=50, location=(0, 3, 1.1), rotation=(0, 0, 0), scale=(1, 1, 1))
+animate_object(octagon, frame=100, location=(0, 3, 1.1), rotation=(0, 0, 0), scale=(1, 1, 1))
+animate_object(octagon, frame=150, location=(0, 3, 1.1), rotation=(0, 0,0), scale=(1, 1, 1))
