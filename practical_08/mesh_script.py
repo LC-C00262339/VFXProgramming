@@ -47,7 +47,7 @@ octagon = bpy.context.object
 bpy.ops.mesh.primitive_cone_add(location=(0, 3, 1.1), vertices=3, radius1=1, radius2=0, depth=2) # Create triangular prism
 cone = bpy.context.object
 
-bpy.ops.object.light_add(type='SPOT', location=(0, 0, 2.5))
+bpy.ops.object.light_add(type='SPOT', location=(0, 0, 10))
 light = bpy.context.object 
 light.data.energy = 500 # Power watt of light
 
@@ -90,6 +90,31 @@ bsdf = nodes.get("Principled BSDF")
 bsdf.inputs["Base Color"].default_value = (0.8, 0, 0.7, 1)
 cube.data.materials.append(cubeshdr)
 
+octashdr = bpy.data.materials.new(name='octa_shader')
+octashdr.use_nodes = True
+nodes = octashdr.node_tree.nodes
+bsdf = nodes.get("Principled BSDF")
+bsdf.inputs["Base Color"].default_value = (0, 0.8, 0.8, 1)
+bsdf.inputs["Metallic"].default_value = (0.5)
+octagon.data.materials.append(octashdr)
+
+sphereshdr = bpy.data.materials.new(name='sphere_shader')
+sphereshdr.use_nodes = True
+nodes = sphereshdr.node_tree.nodes
+bsdf = nodes.get("Principled BSDF")
+bsdf.inputs["Base Color"].default_value = (.283, 0.122, 0.801, 1)
+sphere.data.materials.append(sphereshdr)
+
+coneshdr = bpy.data.materials.new(name='cone_shader')
+coneshdr.use_nodes = True
+nodes = coneshdr.node_tree.nodes
+bsdf = nodes.get("Principled BSDF")
+bsdf.inputs["Base Color"].default_value = (0.8, 0.3, 0, 1)
+cone.data.materials.append(coneshdr)
+
+cylinder.data.materials.append(octashdr)
+
+# gloss = nodes.new(type='ShaderNodeBsdfGlossy') # Gloss effect
 
 # Object materials/textures
 
