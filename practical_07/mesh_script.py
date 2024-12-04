@@ -19,7 +19,7 @@ def animate_object(obj, frame, location=None, rotation=None, scale=None):
 
 # Create camera
 
-bpy.ops.object.camera_add(location=(10, -10, 10)) 
+bpy.ops.object.camera_add(location=(8, -12, 6), rotation=(math.radians(75), 0, math.radians(30)))
 camera = bpy.context.object 
 bpy.context.scene.camera = camera 
 
@@ -28,20 +28,20 @@ bpy.context.scene.camera = camera
 bpy.ops.mesh.primitive_cube_add(location=(0, 0, 1)) # Create cube
 cube = bpy.context.object
 
-bpy.ops.mesh.primitive_cube_add(location=(-2.6, 0, 2.4), scale=(0.1, 6, 3))
+bpy.ops.mesh.primitive_cube_add(location=(-2.6, 0, 3), scale=(0.1, 10, 3))
 top = bpy.context.object
 
-bpy.ops.mesh.primitive_cube_add(location=(0, 0, 0), rotation=(0, math.radians(90), 0), scale=(0.1, 6, 2.5))
+bpy.ops.mesh.primitive_cube_add(location=(0, 0, 0), rotation=(0, math.radians(90), 0), scale=(0.1, 10, 2.5))
 bottom = bpy.context.object
 
 
-bpy.ops.mesh.primitive_cylinder_add(location=(1.6, -3, 0.4), vertices=12, radius=0.5, depth=0.5) # Create cylinder
+bpy.ops.mesh.primitive_cylinder_add(location=(1.6, 1.5, 0.4), vertices=12, radius=0.5, depth=0.5) # Create cylinder
 cylinder = bpy.context.object
 
 bpy.ops.mesh.primitive_uv_sphere_add(location=(0, 1.5, 3), segments=6, ring_count=6, radius=0.75) # Create sphere
 sphere = bpy.context.object
 
-bpy.ops.mesh.primitive_cylinder_add(location=(0, -2, 0.5), rotation=(math.radians(90), 0, 0), vertices=8, radius=1, depth=1) # Create octagonal prism using cylinder
+bpy.ops.mesh.primitive_cylinder_add(location=(0, 3, 3), rotation=(math.radians(90), 0, 0), vertices=8, radius=1, depth=1) # Create octagonal prism using cylinder
 octagon = bpy.context.object
 
 bpy.ops.mesh.primitive_cone_add(location=(0, 3, 1.1), vertices=3, radius1=1, radius2=0, depth=2) # Create triangular prism
@@ -101,6 +101,12 @@ conemtrl = bpy.data.materials.new(name='cone')
 conemtrl.diffuse_color = (0.8, 0.3, 0, 1)
 cone.data.materials.append(conemtrl)
 
+bgmtrl = bpy.data.materials.new(name='background')
+bgmtrl.diffuse_color = (0.239, 0.803, 0.353, 1)
+top.data.materials.append(bgmtrl)
+
+bottom.data.materials.append(bgmtrl)
+
 
 # modifiers = [
 #     {'name': 'Array', 'type': 'ARRAY', 'properties': {'count': 3, 'relative_offset_displace': (2, 0, 0)}}, # Duplicate object
@@ -129,7 +135,11 @@ animate_object(cone, frame=50, location=(0, 5, 1.1), rotation=(0, 0, math.radian
 animate_object(cone, frame=100, location=(0, 5, 1.1), rotation=(0, 0, math.radians(180)), scale=(1, 1, 1))
 animate_object(cone, frame=150, location=(0, 5, 1.1), rotation=(0, 0, math.radians(90)), scale=(1, 1, 1))
 
-animate_object(octagon, frame=1, location=(0, 3, 1.1), rotation=(0, 0, 0), scale=(1, 1, 1))
-animate_object(octagon, frame=50, location=(0, 3, 1.1), rotation=(0, 0, math.radians(90)), scale=(1, 1, 1))
-animate_object(octagon, frame=100, location=(0, 3, 1.1), rotation=(0, 0, math.radians(45)), scale=(1, 1, 1))
-animate_object(octagon, frame=150, location=(0, 3, 1.1), rotation=(0, 0,0), scale=(1, 1, 1))
+animate_object(octagon, frame=1, location=(0, 3, 3), rotation=(0, 0, 0), scale=(1, 1, 1))
+animate_object(octagon, frame=50, location=(0, 3, 3), rotation=(0, 0, math.radians(90)), scale=(1, 1, 1))
+animate_object(octagon, frame=100, location=(0, 3, 3), rotation=(0, 0, math.radians(45)), scale=(1, 1, 1))
+animate_object(octagon, frame=150, location=(0, 3, 3), rotation=(0, 0,0), scale=(1, 1, 1))
+
+animate_object(camera, frame=1, location=(8, -12, 6), rotation=(math.radians(75), 0, math.radians(30)), scale=(1, 1, 1))
+animate_object(camera, frame=50, location=(12, -5.8, 5.9), rotation=(math.radians(75), 0, math.radians(60)), scale=(1, 1, 1))
+animate_object(camera, frame=100, location=(12, 2, 5), rotation=(math.radians(75), 0, math.radians(90)), scale=(1, 1, 1))
