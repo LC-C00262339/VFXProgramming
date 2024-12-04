@@ -47,9 +47,9 @@ octagon = bpy.context.object
 bpy.ops.mesh.primitive_cone_add(location=(0, 3, 1.1), vertices=3, radius1=1, radius2=0, depth=2) # Create triangular prism
 cone = bpy.context.object
 
-bpy.ops.object.light_add(type='SPOT', location=(0, 0, 10))
+bpy.ops.object.light_add(type='POINT', location=(0, 0, 8))
 light = bpy.context.object 
-light.data.energy = 500 # Power watt of light
+light.data.energy = 1500 # Power watt of light
 
 # Create frames
 
