@@ -6,7 +6,7 @@
 # File Paramaters
 BLENDER_BIN		:= blender					# name and location of blender binary // exe
 # e.g. on windows blender is located in 'C://Program Files//Blender Foundation//Blender 3.3//blender' 
-BLEND_FILE		:= practical_07.blend		# Name of Blender File (Project file)
+BLEND_FILE		:= practical_08.blend		# Name of Blender File (Project file)
 VIDEO_FILE		:= video_production.blend   # Name of Video Edit File
 BLEND_SCRIPT	:= mesh_script.py			# Python Script to run
 # render directory

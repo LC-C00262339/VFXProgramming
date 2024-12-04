@@ -81,22 +81,6 @@ conemodifier.use_axis[2] = True
 conemodifier.use_bisect_axis[2] = True
 
 
-
-# modifiers = [
-#     {'name': 'Array', 'type': 'ARRAY', 'properties': {'count': 3, 'relative_offset_displace': (2, 0, 0)}}, # Duplicate object
-#    {'name': 'Bevel', 'type': 'BEVEL', 'properties': {'affect': 'VERTICES', 'amount': 0.5, 'segments': 1}}, # Bevels cube mesh
-#    {'name': 'Build', 'type': 'BUILD', 'properties': {'frame_start': 10, 'frame_duration': 15}}, # Creates mesh during frames
-#    {'name': 'Mirror', 'type': 'MIRROR'}, # Mirror objects
-#    {'name': 'Subdivision', 'type': 'SUBSURF', 'properties': {'levels': 3}} # Subdivide
-#]
-
-#for mod in modifiers:
-#    modifier = cube.modifiers.new(name=mod['name'], type=mod['type'])
-#    # cubemodifier = cube.modifiers.new(name=mod['Build'], type=mod['BUILD'])
-#   for prop, value in mod.get('properties', {}).items():
-#        setattr(modifier, prop, value)
-
-
 # Animation
 
 animate_object(sphere, frame=1, location=(0, -3, 3), rotation=(0, 0, 0), scale=(1, 1, 1))
